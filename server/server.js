@@ -10,6 +10,7 @@ const isUserExist = (username,password) => {
 
 const server=http.createServer((
     req,res)=>{
+    res.setHeader('Access-Control-Allow-Origin','*')
     const parseUrl=url.parse(req.url,true)
     const checkUser=isUserExist(parseUrl.query.username,parseUrl.query.password)
     if(parseUrl.pathname==='/api/user/login'){
