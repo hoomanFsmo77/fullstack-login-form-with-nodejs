@@ -127,18 +127,22 @@ var useRegister = function useRegister() {
     password: ''
   });
   var registerHandler = function registerHandler() {
-    axios__WEBPACK_IMPORTED_MODULE_2__["default"].get('http://localhost:9001/api/user/register', {
-      params: {
-        username: userData.username,
-        password: userData.password
-      }
-    }).then(function (response) {
-      if (response.data.statusCode === 200) {
-        router.push('/welcome');
-      } else {
-        alert('user already exist!');
-      }
-    });
+    if (userData.username.length > 4 && userData.password.length > 8) {
+      axios__WEBPACK_IMPORTED_MODULE_2__["default"].get('http://localhost:9001/api/user/register', {
+        params: {
+          username: userData.username,
+          password: userData.password
+        }
+      }).then(function (response) {
+        if (response.data.statusCode === 200) {
+          router.push('/welcome');
+        } else {
+          alert('user already exist!');
+        }
+      });
+    } else {
+      alert('please enter valid value!');
+    }
   };
   return {
     registerHandler: registerHandler,
@@ -216,4 +220,4 @@ __webpack_require__.r(__webpack_exports__);
 /***/ })
 
 }]);
-//# sourceMappingURL=app.dbf79c65ae122adea74d.js.map
+//# sourceMappingURL=app.d07cd9952f693280276e.js.map

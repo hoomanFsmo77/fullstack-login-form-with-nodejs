@@ -127,18 +127,22 @@ var useLogin = function useLogin() {
     password: ''
   });
   var loginHandler = function loginHandler() {
-    axios__WEBPACK_IMPORTED_MODULE_2__["default"].get('http://localhost:9001/api/user/login', {
-      params: {
-        username: userData.username,
-        password: userData.password
-      }
-    }).then(function (checkUser) {
-      if (checkUser.data.statusCode === 200) {
-        router.push('/welcome');
-      } else {
-        alert('your username or password no found!');
-      }
-    });
+    if (userData.username.length > 4 && userData.password.length > 8) {
+      axios__WEBPACK_IMPORTED_MODULE_2__["default"].get('http://localhost:9001/api/user/login', {
+        params: {
+          username: userData.username,
+          password: userData.password
+        }
+      }).then(function (checkUser) {
+        if (checkUser.data.statusCode === 200) {
+          router.push('/welcome');
+        } else {
+          alert('your username or password no found!');
+        }
+      });
+    } else {
+      alert('please enter valid value!');
+    }
   };
   return {
     loginHandler: loginHandler,
@@ -216,4 +220,4 @@ __webpack_require__.r(__webpack_exports__);
 /***/ })
 
 }]);
-//# sourceMappingURL=app.d36c219788e9d9c53f5b.js.map
+//# sourceMappingURL=app.6b372d5aa6e8c5f46e52.js.map
