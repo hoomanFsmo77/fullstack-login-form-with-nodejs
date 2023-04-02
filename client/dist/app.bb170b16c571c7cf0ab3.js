@@ -128,17 +128,14 @@ var useRegister = function useRegister() {
   });
   var registerHandler = function registerHandler() {
     if (userData.username.length > 4 && userData.password.length > 8) {
-      axios__WEBPACK_IMPORTED_MODULE_2__["default"].get('http://localhost:9001/api/user/register', {
-        params: {
-          username: userData.username,
-          password: userData.password
-        }
+      axios__WEBPACK_IMPORTED_MODULE_2__["default"].post('http://localhost:9001/api/user/register', {
+        username: userData.username,
+        password: userData.password
       }).then(function (response) {
-        if (response.data.statusCode === 200) {
-          router.push('/welcome');
-        } else {
-          alert('user already exist!');
-        }
+        localStorage.setItem('userId', response.data.userId);
+        router.push('/welcome');
+      }).catch(function (err) {
+        alert('user already exist!');
       });
     } else {
       alert('please enter valid value!');
@@ -220,4 +217,4 @@ __webpack_require__.r(__webpack_exports__);
 /***/ })
 
 }]);
-//# sourceMappingURL=app.d07cd9952f693280276e.js.map
+//# sourceMappingURL=app.bb170b16c571c7cf0ab3.js.map

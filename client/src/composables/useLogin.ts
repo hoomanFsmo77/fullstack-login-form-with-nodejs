@@ -13,17 +13,14 @@ export const useLogin=()=>{
 
     const loginHandler =  () => {
         if(userData.username.length>4 && userData.password.length>8){
-            axios.get('http://localhost:9001/api/user/login',{
-                params:{
-                    username:userData.username,
-                    password:userData.password
-                }
-            }).then(checkUser=>{
-                if(checkUser.data.statusCode===200){
-                    router.push('/welcome')
-                }else{
-                    alert('your username or password no found!')
-                }
+            axios.put('http://localhost:9001/api/user/login',{
+                username:userData.username,
+                password:userData.password
+            }).then((checkUser)=>{
+                localStorage.setItem('userId',checkUser.data.userId)
+                router.push('/welcome')
+            }).catch(err=>{
+                alert('your username or password not found!')
             })
         }else{
             alert('please enter valid value!')
