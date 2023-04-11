@@ -13204,9 +13204,11 @@ var __generator = undefined && undefined.__generator || function (thisArg, body)
           userId = localStorage.getItem('userId');
           if (userId) {
             axios__WEBPACK_IMPORTED_MODULE_2__["default"].get("http://localhost:9001/api/user/me/".concat(userId)).then(function (res) {
-              router.push('/welcome');
-            }).catch(function (err) {
-              router.push('/');
+              if (res.data.statusCode === 200) {
+                router.push('/welcome');
+              } else {
+                router.push('/');
+              }
             });
           } else {
             router.push('/');
@@ -14360,7 +14362,7 @@ __webpack_require__.r(__webpack_exports__);
 // extracted by mini-css-extract-plugin
 
     if(true) {
-      // 1680469082973
+      // 1681239082574
       var cssReload = __webpack_require__(/*! ../../../node_modules/mini-css-extract-plugin/dist/hmr/hotModuleReplacement.js */ "./node_modules/mini-css-extract-plugin/dist/hmr/hotModuleReplacement.js")(module.id, {"locals":false});
       module.hot.dispose(cssReload);
       module.hot.accept(undefined, cssReload);
@@ -14401,13 +14403,13 @@ exports["default"] = (sfc, props) => {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _App_vue_vue_type_template_id_7ba5bd90_ts_true__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./App.vue?vue&type=template&id=7ba5bd90&ts=true */ "./src/App.vue?vue&type=template&id=7ba5bd90&ts=true");
 /* harmony import */ var _App_vue_vue_type_script_setup_true_lang_ts__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./App.vue?vue&type=script&setup=true&lang=ts */ "./src/App.vue?vue&type=script&setup=true&lang=ts");
-/* harmony import */ var D_WEB_Projects_Javascript_apps_full_stack_login_form_T_client_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
+/* harmony import */ var D_WEB_Projects_Fullstack_apps_login_form_T_client_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
 
 
 
 
 ;
-const __exports__ = /*#__PURE__*/(0,D_WEB_Projects_Javascript_apps_full_stack_login_form_T_client_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_App_vue_vue_type_script_setup_true_lang_ts__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_App_vue_vue_type_template_id_7ba5bd90_ts_true__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"src/App.vue"]])
+const __exports__ = /*#__PURE__*/(0,D_WEB_Projects_Fullstack_apps_login_form_T_client_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_App_vue_vue_type_script_setup_true_lang_ts__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_App_vue_vue_type_template_id_7ba5bd90_ts_true__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"src/App.vue"]])
 /* hot reload */
 if (true) {
   __exports__.__hmrId = "7ba5bd90"
@@ -27662,7 +27664,7 @@ function useRoute() {
 /******/ 		// This function allow to reference async chunks
 /******/ 		__webpack_require__.u = function(chunkId) {
 /******/ 			// return url for filenames based on template
-/******/ 			return "app." + {"src_pages_Login_vue":"1e017780966092f29446","src_pages_Register_vue":"bb170b16c571c7cf0ab3","src_pages_Welcome_vue":"065a712a86778a4df246"}[chunkId] + ".js";
+/******/ 			return "app." + {"src_pages_Login_vue":"328dba10112daebd269d","src_pages_Register_vue":"57632cb3325bacf73ac4","src_pages_Welcome_vue":"fc8850baea9c42ce6488"}[chunkId] + ".js";
 /******/ 		};
 /******/ 	}();
 /******/ 	
@@ -27691,7 +27693,7 @@ function useRoute() {
 /******/ 	
 /******/ 	/* webpack/runtime/getFullHash */
 /******/ 	!function() {
-/******/ 		__webpack_require__.h = function() { return "a041f9fb819db3671337"; }
+/******/ 		__webpack_require__.h = function() { return "eef08621e33bf34462fd"; }
 /******/ 	}();
 /******/ 	
 /******/ 	/* webpack/runtime/global */
@@ -28865,4 +28867,4 @@ function useRoute() {
 /******/ 	
 /******/ })()
 ;
-//# sourceMappingURL=app.d471b549143a6394f6f5.js.map
+//# sourceMappingURL=app.d6c6c2893e22dc91f230.js.map

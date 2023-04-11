@@ -17,10 +17,13 @@ export const useLogin=()=>{
                 username:userData.username,
                 password:userData.password
             }).then((checkUser)=>{
-                localStorage.setItem('userId',checkUser.data.userId)
-                router.push('/welcome')
-            }).catch(err=>{
-                alert('your username or password not found!')
+                if(checkUser.data.statusCode===200){
+                    localStorage.setItem('userId',checkUser.data.userId)
+                    router.push('/welcome')
+                }else{
+                    alert('your username or password not found!')
+                }
+
             })
         }else{
             alert('please enter valid value!')

@@ -1,21 +1,26 @@
 const express=require('express')
-const db = require("../database");
+const database = require("../database");
 const loginRoute=express.Router()
-const isUserExist = (username,password) => {
-    return db.usersData.some((item)=>item.username===username && item.password===password)
-}
+
+
 loginRoute.put('/login',(req,res)=>{
-    const checkUser=isUserExist(req.body.username,req.body.password)
-    const target=db.usersData.filter(item=>item.username===req.body.username && item.password===req.body.password)[0]
-    if(checkUser){
-        res.send({
-            statusCode:200,
-            message:'user exists',
-            userId:target.id
-        })
-    }else{
-        res.error()
-    }
+    const username=req.body.username
+    const password=req.body.password
+    const getUserQuery=`SELECT id FROM users WHERE username="${username}" AND password=${password}`
+    database.loginFormDB.query(getUserQuery,(err,response)=>{
+        if(response){
+            res.send({
+                        statusCode:200,
+                        message:'user exists',
+                        userId:response[0].id
+            })
+        }else{
+            res.send({
+                statusCode:404,
+                message:'user no found exists',
+            })
+        }
+    })
 })
 
 

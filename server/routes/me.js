@@ -1,18 +1,40 @@
 const express=require('express')
-const db = require("../database");
+const database = require("../database");
 const meRoute=express.Router()
+
+
 
 meRoute.get('/me/:id',(req,res)=>{
     const userId=req.params.id
     if(userId){
-        const target=db.usersData.filter(item=>item.id===Number(userId))[0]
-        if(target){
-            res.send(target)
-        }else{
-            res.error()
-        }
+        const getUserInfo=`SELECT * FROM users WHERE id=${userId}`
+        database.loginFormDB.query(getUserInfo,(err,response)=>{
+            if(err){
+                res.send({
+                    statusCode:404,
+                    message:'user not found!'
+                })
+            }else{
+                if(response.length>0){
+                    res.send({
+                        statusCode:200,
+                        userData:response[0]
+                    })
+                }else{
+                    res.send({
+                        statusCode:404,
+                        message:'user not found!'
+                    })
+                }
+
+            }
+
+        })
     }else{
-        res.error()
+        res.send({
+            statusCode:501,
+            message:'missing required id!'
+        })
     }
 
 })

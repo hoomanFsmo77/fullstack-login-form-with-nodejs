@@ -132,10 +132,12 @@ var useLogin = function useLogin() {
         username: userData.username,
         password: userData.password
       }).then(function (checkUser) {
-        localStorage.setItem('userId', checkUser.data.userId);
-        router.push('/welcome');
-      }).catch(function (err) {
-        alert('your username or password not found!');
+        if (checkUser.data.statusCode === 200) {
+          localStorage.setItem('userId', checkUser.data.userId);
+          router.push('/welcome');
+        } else {
+          alert('your username or password not found!');
+        }
       });
     } else {
       alert('please enter valid value!');
@@ -158,13 +160,13 @@ var useLogin = function useLogin() {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Login_vue_vue_type_template_id_15717af5_ts_true__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Login.vue?vue&type=template&id=15717af5&ts=true */ "./src/pages/Login.vue?vue&type=template&id=15717af5&ts=true");
 /* harmony import */ var _Login_vue_vue_type_script_setup_true_lang_ts__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Login.vue?vue&type=script&setup=true&lang=ts */ "./src/pages/Login.vue?vue&type=script&setup=true&lang=ts");
-/* harmony import */ var D_WEB_Projects_Javascript_apps_full_stack_login_form_T_client_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
+/* harmony import */ var D_WEB_Projects_Fullstack_apps_login_form_T_client_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
 
 
 
 
 ;
-const __exports__ = /*#__PURE__*/(0,D_WEB_Projects_Javascript_apps_full_stack_login_form_T_client_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_Login_vue_vue_type_script_setup_true_lang_ts__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_Login_vue_vue_type_template_id_15717af5_ts_true__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"src/pages/Login.vue"]])
+const __exports__ = /*#__PURE__*/(0,D_WEB_Projects_Fullstack_apps_login_form_T_client_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_Login_vue_vue_type_script_setup_true_lang_ts__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_Login_vue_vue_type_template_id_15717af5_ts_true__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"src/pages/Login.vue"]])
 /* hot reload */
 if (true) {
   __exports__.__hmrId = "15717af5"
@@ -217,4 +219,4 @@ __webpack_require__.r(__webpack_exports__);
 /***/ })
 
 }]);
-//# sourceMappingURL=app.1e017780966092f29446.js.map
+//# sourceMappingURL=app.328dba10112daebd269d.js.map
